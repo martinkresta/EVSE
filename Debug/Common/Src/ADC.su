@@ -1,0 +1,4 @@
+C:/Martin/GIT/UHA_COMMON/Src/ADC.c:20:6:ADC_Init	24	static
+C:/Martin/GIT/UHA_COMMON/Src/ADC.c:32:6:ADC_StartConversion	8	static
+C:/Martin/GIT/UHA_COMMON/Src/ADC.c:40:10:ADC_GetValue	16	static
+C:/Martin/GIT/UHA_COMMON/Src/ADC.c:53:6:HAL_ADC_ConvCpltCallback	16	static
