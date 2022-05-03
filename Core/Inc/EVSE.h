@@ -28,6 +28,7 @@ typedef enum
 	evsCarFull,
 	evsCharging,
 	evsNoFreePower,
+	evsDisabled,
 	evsError
 }eEvseState;
 

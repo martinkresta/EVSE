@@ -8,6 +8,7 @@ C_SRCS += \
 ../Core/Src/APP.c \
 ../Core/Src/EVSE.c \
 ../Core/Src/ST7066U.c \
+../Core/Src/di.c \
 ../Core/Src/main.c \
 ../Core/Src/scheduler.c \
 ../Core/Src/stm32l4xx_hal_msp.c \
@@ -20,6 +21,7 @@ OBJS += \
 ./Core/Src/APP.o \
 ./Core/Src/EVSE.o \
 ./Core/Src/ST7066U.o \
+./Core/Src/di.o \
 ./Core/Src/main.o \
 ./Core/Src/scheduler.o \
 ./Core/Src/stm32l4xx_hal_msp.o \
@@ -32,6 +34,7 @@ C_DEPS += \
 ./Core/Src/APP.d \
 ./Core/Src/EVSE.d \
 ./Core/Src/ST7066U.d \
+./Core/Src/di.d \
 ./Core/Src/main.d \
 ./Core/Src/scheduler.d \
 ./Core/Src/stm32l4xx_hal_msp.d \
@@ -48,7 +51,7 @@ Core/Src/%.o Core/Src/%.su: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/APP.d ./Core/Src/APP.o ./Core/Src/APP.su ./Core/Src/EVSE.d ./Core/Src/EVSE.o ./Core/Src/EVSE.su ./Core/Src/ST7066U.d ./Core/Src/ST7066U.o ./Core/Src/ST7066U.su ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/scheduler.d ./Core/Src/scheduler.o ./Core/Src/scheduler.su ./Core/Src/stm32l4xx_hal_msp.d ./Core/Src/stm32l4xx_hal_msp.o ./Core/Src/stm32l4xx_hal_msp.su ./Core/Src/stm32l4xx_it.d ./Core/Src/stm32l4xx_it.o ./Core/Src/stm32l4xx_it.su ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32l4xx.d ./Core/Src/system_stm32l4xx.o ./Core/Src/system_stm32l4xx.su
+	-$(RM) ./Core/Src/APP.d ./Core/Src/APP.o ./Core/Src/APP.su ./Core/Src/EVSE.d ./Core/Src/EVSE.o ./Core/Src/EVSE.su ./Core/Src/ST7066U.d ./Core/Src/ST7066U.o ./Core/Src/ST7066U.su ./Core/Src/di.d ./Core/Src/di.o ./Core/Src/di.su ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/scheduler.d ./Core/Src/scheduler.o ./Core/Src/scheduler.su ./Core/Src/stm32l4xx_hal_msp.d ./Core/Src/stm32l4xx_hal_msp.o ./Core/Src/stm32l4xx_hal_msp.su ./Core/Src/stm32l4xx_it.d ./Core/Src/stm32l4xx_it.o ./Core/Src/stm32l4xx_it.su ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32l4xx.d ./Core/Src/system_stm32l4xx.o ./Core/Src/system_stm32l4xx.su
 
 .PHONY: clean-Core-2f-Src
 

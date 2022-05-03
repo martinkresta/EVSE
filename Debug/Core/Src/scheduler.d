@@ -37,7 +37,8 @@ Core/Src/scheduler.o: ../Core/Src/scheduler.c ../../UHA_COMMON/Inc/UI.h \
  ../Core/Inc/scheduler.h ../Core/Inc/main.h ../../UHA_COMMON/Inc/MCAN.h \
  ../../UHA_COMMON/Inc/circbuf.h ../../UHA_COMMON/Inc/COM.h \
  ../../UHA_COMMON/Inc/MCAN.h ../../UHA_COMMON/Inc/ELM.h ../Core/Inc/APP.h \
- ../../UHA_COMMON/Inc/ADC.h ../Core/Inc/ST7066U.h ../Core/Inc/EVSE.h
+ ../../UHA_COMMON/Inc/ADC.h ../Core/Inc/ST7066U.h ../Core/Inc/EVSE.h \
+ ../Core/Inc/di.h
 ../../UHA_COMMON/Inc/UI.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
@@ -86,3 +87,4 @@ Core/Src/scheduler.o: ../Core/Src/scheduler.c ../../UHA_COMMON/Inc/UI.h \
 ../../UHA_COMMON/Inc/ADC.h:
 ../Core/Inc/ST7066U.h:
 ../Core/Inc/EVSE.h:
+../Core/Inc/di.h:

@@ -19,6 +19,10 @@
 #include "ST7066U.h"
 #include "VARS.h"
 #include "EVSE.h"
+#include "di.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 
@@ -39,6 +43,7 @@ void APP_Init(void)
   	WDG_Init(3000);
   	ELM_Init(NUM_OF_ELEMTERS);
   	ADC_Init(&hadc1, &hdma_adc1, 1);
+  	DI_Init();
 
 
 
@@ -111,7 +116,7 @@ void APP_Start(void)
 
 }
 
-void APP_Update_1s(void)
+void APP_Update_100ms(void)
 {
 	// check midnight
 	char row[16];
@@ -134,32 +139,43 @@ void APP_Update_1s(void)
 		LCD_Show_String("****************", 1);
 		break;
 	case evsNoCarDetected:
-		LCD_Show_String("No Vehicle	     ", 0);
+		sprintf(row,"No Vehicle");
+		LCD_Show_String(row, 0);
 		sprintf(row,"Limit: %dA ",EVSE_GetCurrentLimit());
 		LCD_Show_String(row, 1);
 		break;
 	case evsCarFull:
-		LCD_Show_String("Vehicle charged ", 0);
+		sprintf(row,"Vehicle charged");
+		LCD_Show_String(row, 0);
 		sprintf(row,"Limit: %dA ",EVSE_GetCurrentLimit());
 		LCD_Show_String(row, 1);
 		break;
 	case evsCharging:
-		sprintf(row,"Charging: %dW",EVSE_GetCurrentLimit());
+		sprintf(row,"Charging: %dW",EVSE_GetActualPower());
 		LCD_Show_String(row, 0);
 		sprintf(row,"Consumed: %dWh ",EVSE_GetThisCons());
 		LCD_Show_String(row, 1);
 		break;
 	case evsNoFreePower:
-		LCD_Show_String("No free power", 0);
+		sprintf(row,"No free power");
+		LCD_Show_String(row, 0);
+		sprintf(row,"Limit: %dA ",EVSE_GetCurrentLimit());
+		LCD_Show_String(row, 1);
+		break;
+	case evsDisabled:
+		sprintf(row,"Disabled by user");
+		LCD_Show_String(row, 0);
 		sprintf(row,"Limit: %dA ",EVSE_GetCurrentLimit());
 		LCD_Show_String(row, 1);
 		break;
 	case evsError:
-		LCD_Show_String("EVSE ERROR! ", 0);
+		sprintf(row,"EVSE ERROR!");
+		LCD_Show_String(row, 0);
 		sprintf(row,"Limit: %dA ",EVSE_GetCurrentLimit());
 		LCD_Show_String(row, 1);
 		break;
 	}
+
 
 
 

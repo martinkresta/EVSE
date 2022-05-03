@@ -39,7 +39,8 @@ Core/Src/APP.o: ../Core/Src/APP.c ../../UHA_COMMON/Inc/RTC.h \
  ../Core/Inc/scheduler.h ../../UHA_COMMON/Inc/COM.h \
  ../../UHA_COMMON/Inc/MCAN.h ../../UHA_COMMON/Inc/ELM.h \
  ../../UHA_COMMON/Inc/ADC.h ../../UHA_COMMON/Inc/watchdog.h \
- ../Core/Inc/ST7066U.h ../../UHA_COMMON/Inc/VARS.h ../Core/Inc/EVSE.h
+ ../Core/Inc/ST7066U.h ../../UHA_COMMON/Inc/VARS.h ../Core/Inc/EVSE.h \
+ ../Core/Inc/di.h
 ../../UHA_COMMON/Inc/RTC.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
@@ -91,3 +92,4 @@ Core/Src/APP.o: ../Core/Src/APP.c ../../UHA_COMMON/Inc/RTC.h \
 ../Core/Inc/ST7066U.h:
 ../../UHA_COMMON/Inc/VARS.h:
 ../Core/Inc/EVSE.h:
+../Core/Inc/di.h:

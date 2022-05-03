@@ -1,4 +1,4 @@
-Core/Src/EVSE.o: ../Core/Src/EVSE.c ../Core/Inc/EVSE.h ../Core/Inc/main.h \
+Core/Src/di.o: ../Core/Src/di.c ../Core/Inc/di.h ../Core/Inc/main.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
  ../Core/Inc/stm32l4xx_hal_conf.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h \
@@ -34,10 +34,9 @@ Core/Src/EVSE.o: ../Core/Src/EVSE.c ../Core/Inc/EVSE.h ../Core/Inc/main.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
- ../../UHA_COMMON/Inc/ADC.h ../Core/Inc/main.h ../Core/Inc/APP.h \
- ../../UHA_COMMON/Inc/MCAN.h ../../UHA_COMMON/Inc/circbuf.h \
- ../Core/Inc/di.h
-../Core/Inc/EVSE.h:
+ ../Core/Inc/APP.h ../../UHA_COMMON/Inc/MCAN.h ../Core/Inc/main.h \
+ ../../UHA_COMMON/Inc/circbuf.h
+../Core/Inc/di.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -74,9 +73,7 @@ Core/Src/EVSE.o: ../Core/Src/EVSE.c ../Core/Inc/EVSE.h ../Core/Inc/main.h \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h:
-../../UHA_COMMON/Inc/ADC.h:
-../Core/Inc/main.h:
 ../Core/Inc/APP.h:
 ../../UHA_COMMON/Inc/MCAN.h:
+../Core/Inc/main.h:
 ../../UHA_COMMON/Inc/circbuf.h:
-../Core/Inc/di.h:

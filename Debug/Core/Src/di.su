@@ -1,0 +1,6 @@
+../Core/Src/di.c:18:6:DI_Init	40	static
+../Core/Src/di.c:52:13:DI_Struct_Initialisation	16	static
+../Core/Src/di.c:63:6:DI_Read	16	static
+../Core/Src/di.c:92:5:DI_Get	16	static
+../Core/Src/di.c:104:6:DI_Read_All	16	static
+../Core/Src/di.c:115:13:OnChange	16	static

@@ -13,6 +13,7 @@
 #include "ADC.h"
 #include "ST7066U.h"
 #include "EVSE.h"
+#include "di.h"
 
 
 
@@ -172,7 +173,7 @@ void Scheduler_Check_Flag(void)
 */
 static void Timer_Task_1ms(void)
 {	
-	//DI_Read_All();
+	DI_Read_All();
 }
 
 /**
@@ -221,7 +222,7 @@ static void Timer_Task_50ms(void)
 */
 static void Timer_Task_100ms(void)
 {
-	EVSE_Update_100ms();
+
 	//ADC_StartConversion();
 }
 
@@ -234,6 +235,9 @@ static void Timer_Task_100ms(void)
 */
 static void Timer_Task_250ms(void)
 {
+	EVSE_Update_100ms();
+	APP_Update_100ms();
+	LCD_Refresf_Display();
 }
 	
 /**
@@ -245,7 +249,7 @@ static void Timer_Task_250ms(void)
 */
 static void Timer_Task_500ms(void)
 {
-	LCD_Refresf_Display();
+
 }
 
 /**
@@ -258,7 +262,7 @@ static void Timer_Task_500ms(void)
 static void Timer_Task_1s(void)
 {	
 	WDG_Refresh();
-	APP_Update_1s();
+
 	ELM_Update_1s();
 
 }

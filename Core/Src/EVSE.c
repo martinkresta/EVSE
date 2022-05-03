@@ -10,6 +10,7 @@
 #include "ADC.h"
 #include "main.h"
 #include "APP.h"
+#include "di.h"
 
 uint16_t mLimitCurrent_A;
 uint16_t mThisCharge_Wh;
@@ -60,42 +61,51 @@ void EVSE_Update_100ms(void)
 	pilotVoltage_mV = adcpin_mV * 6.05;  // voltage divider 12k + 56k
 	ADC_StartConversion();
 
-	if(pilotVoltage_mV > EVSE_CPV_NOCAR_MV)
+	if (mState == evsDisabled)
 	{
-		mState = evsNoCarDetected;
 		mRelayState = 0;
-	}
-	else if (pilotVoltage_mV > EVSE_CPV_CAR_DETECT_MV)
-	{
-		mState = evsCarFull;
-		mRelayState = 0;
-	}
-	else if (pilotVoltage_mV > EVSE_CPV_CAR_READY_MV)
-	{
-		mState = evsCharging;
-		if (mRelayState == 0)
-		{
-			mRelayState = 1;
-			mThisCharge_Wh = 0;
-			ELM_ResetConsumption(ELM_EVSE);
-		}
-
-	}
-	else if (pilotVoltage_mV > EVSE_CPV_CAR_VENT_MV)
-	{
-		mState = evsCharging;
-		if (mRelayState == 0)
-		{
-			mRelayState = 1;
-			mThisCharge_Wh = 0;
-			ELM_ResetConsumption(ELM_EVSE);
-		}
 	}
 	else
 	{
-		mState = evsError;
-		mRelayState = 0;
+		if(pilotVoltage_mV > EVSE_CPV_NOCAR_MV)
+		{
+			mState = evsNoCarDetected;
+			mRelayState = 0;
+		}
+		else if (pilotVoltage_mV > EVSE_CPV_CAR_DETECT_MV)
+		{
+			mState = evsCarFull;
+			mRelayState = 0;
+		}
+		else if (pilotVoltage_mV > EVSE_CPV_CAR_READY_MV)
+		{
+			mState = evsCharging;
+			if (mRelayState == 0)
+			{
+				mRelayState = 1;
+				mThisCharge_Wh = 0;
+				ELM_ResetConsumption(ELM_EVSE);
+			}
+
+		}
+		else if (pilotVoltage_mV > EVSE_CPV_CAR_VENT_MV)
+		{
+			mState = evsCharging;
+			if (mRelayState == 0)
+			{
+				mRelayState = 1;
+				mThisCharge_Wh = 0;
+				ELM_ResetConsumption(ELM_EVSE);
+			}
+		}
+		else
+		{
+			mState = evsError;
+			mRelayState = 0;
+		}
 	}
+
+
 
 	// control relay
 
@@ -113,6 +123,31 @@ void EVSE_Update_100ms(void)
 	// measure actual charging current using standard elmeter
 	mThisCharge_Wh = ELM_GetConsumptionWh(ELM_EVSE);
 	mActualPower_W = ELM_GetPowerW(ELM_EVSE);
+
+	// process buttons
+
+	if (DI_Get(UP) == eDI_LO)
+	{
+		EVSE_SetCurrentLimit(EVSE_GetCurrentLimit() + 1);
+	}
+	if (DI_Get(DOWN) == eDI_LO)
+	{
+		EVSE_SetCurrentLimit(EVSE_GetCurrentLimit() - 1);
+	}
+
+	if (DI_Get(ENTER) == eDI_LO)
+	{
+		if (mState != evsDisabled)
+		{
+			mState = evsDisabled;
+		}
+		else
+		{
+			mState = evsInit;
+		}
+	}
+
+
 }
 
 
@@ -137,7 +172,10 @@ void EVSE_SetCurrentLimit(uint16_t chargingCurrent)
 	{
 		mLimitCurrent_A = EVSE_MAX_CURRENT;
 	}
-
+	if (chargingCurrent < 6)
+	{
+		mLimitCurrent_A = 6;
+	}
 	SetCurrent(mLimitCurrent_A);
 }
 
